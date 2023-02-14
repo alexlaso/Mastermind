@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import org.json.JSONArray;
+
 
 public class Receptor implements Runnable {
-
+    JSONArray jsonArray = new JSONArray();
     BufferedReader reader;
 
     public Receptor(InputStream inputStream){
