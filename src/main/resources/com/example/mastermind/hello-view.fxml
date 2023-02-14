@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mastermind.HelloController">
+   <children>
+      <HBox fx:id="hboxIntento1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento1color1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
+            <Pane fx:id="intento1color2" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
+            <Pane fx:id="intento1color3" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
+            <Pane fx:id="intento1color4" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
+            <Pane fx:id="intento1color5" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento2color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento2color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento2color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento2color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento2color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento3color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento3color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento3color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento3color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento3color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento4color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento4color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento4color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento4color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento4color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento5color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento5color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento5color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento5color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento5color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento6" layoutX="10.0" layoutY="90.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento6color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento6color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento6color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento6color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento6color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento7" layoutX="10.0" layoutY="90.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento7color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento7color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento7color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento7color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento7color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento8" layoutX="10.0" layoutY="90.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento8color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento8color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento8color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento8color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento8color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="90.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento9color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento9color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento9color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento9color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento9color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxIntento10" layoutX="10.0" layoutY="413.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="intento10color1" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento10color2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento10color3" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento10color4" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="intento10color5" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxFinal" layoutX="10.0" layoutY="464.0" minHeight="-Infinity" prefHeight="60.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="hboxFinal1" layoutX="10.0" layoutY="562.0" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="40.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ComboBox fx:id="color1picker" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="color2picker" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="color3picker" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="color4picker" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="color5picker" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <Button fx:id="btnEnviar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#enviarIntento" prefHeight="50.0" text="ENVIAR" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+   </children>
+</VBox>
