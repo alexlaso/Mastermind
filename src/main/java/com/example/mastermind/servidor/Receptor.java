@@ -1,8 +1,15 @@
 package com.example.mastermind.servidor;
 
+import com.example.mastermind.Codigo;
+import org.json.JSONObject;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Receptor implements Runnable {
+    List<String> colores = new ArrayList<String>();
 
     BufferedReader reader;
     PrintWriter writer;
@@ -12,12 +19,21 @@ public class Receptor implements Runnable {
     public Receptor(InputStream inputStream, OutputStream outputStream){
         reader = new BufferedReader(new InputStreamReader(inputStream));
         writer = new PrintWriter(outputStream);
+
+        colores.add("BLACK");
+        colores.add("BLUE");
+        colores.add("WHITE");
+        colores.add("GREEN");
+        colores.add("RED");
+        colores.add("YELLOW");
+        colores.add("PINK");
+        colores.add("PURPLE");
+        generarSolucion("solucion.json");
     }
 
 
     @Override
     public void run() {
-
         while(true){
             try{read = reader.readLine();
                 adivinar();
@@ -36,74 +52,45 @@ public class Receptor implements Runnable {
 
 
     private void adivinar() {
-        if (intentos == 0){
-            generador(min, max, prueba);
-            writer.println("Algo me dice que estás pensando en el número: "+prueba);
-            writer.println("¿Es tu número?");
-            intentos+=1;
-        }else if (intentos>0){
-            switch (read){
-                case "Si","si":
-                    writer.println("Y solo me ha llevado "+intentos+" intentos acertarlo");
-                    intentos=-1;
-                    break;
-                case "No", "no":
-                    writer.println("¿Tu número es mayor o menor?");
-                    writer.flush();
-                    try {
-                        read =reader.readLine();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    switch (read) {
-                        case "Mayor", "mayor":
-                            min = prueba;
-                            writer.println("¿Quizá es este?");
-                            writer.println(prueba);
-                            intentos += 1;
-                            generador(min, max, prueba);
-                            break;
-                        case "Menor", "menor":
-                            max = prueba;
-                            writer.println("¿Quizá es este?");
-                            writer.println(prueba);
-                            intentos += 1;
-                            generador(min, max, prueba);
-                            break;
-                        case "exit":
-                            writer.println("exit");
-                            writer.flush();
-                            System.exit(0);
-                            break;
-                        default:
-                            writer.println("Te has colado crack");
-                            break;
-                    }break;
-                    case "exit":
-                        writer.println("exit");
-                        writer.flush();
-                        System.exit(0);
-                }
-            }
-        else if(intentos == -1){
-            writer.println("¿Quieres jugar de nuevo?");
-            try {
-                read = reader.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            switch(read){
-                case "Si", "si":
-                    intentos =0;
-                    break;
-                case "No", "no":
-                    writer.println("exit");
-                    writer.flush();
-                    System.exit(0);
-            }
         }
+private void generarSolucion(String filename){
+    Codigo solucion = new Codigo();
+    List<String> elegidos = new ArrayList<String>();
+    for (int i=0; i<5;i++){
+        Collections.shuffle(colores);
+        elegidos.add(colores.get(0));
     }
-    private void generador(int min, int max, int prueba){
-       this.prueba = (int) (Math.random() * (max - min) + min);
-    }}
+    JSONObject json = new JSONObject();
+    solucion.setColor1(elegidos.get(0));
+    json.put("color1", solucion.getColor1());
+
+    solucion.setColor2(elegidos.get(1));
+    json.put("color2", solucion.getColor2());
+
+    solucion.setColor3(elegidos.get(2));
+    json.put("color3", solucion.getColor3());
+
+    solucion.setColor4(elegidos.get(3));
+    json.put("color4", solucion.getColor4());
+
+    solucion.setColor5(elegidos.get(4));
+    json.put("color5", solucion.getColor5());
+
+    File f = new File("solucion.json");
+    try {
+        f.createNewFile();
+        System.out.println("Fichero creado exitosamente");
+        BufferedWriter bw = null;
+        bw = new BufferedWriter(new FileWriter(f));
+        bw.write(json.toString());
+        System.out.println("Fichero escrito exitosamente");
+        bw.close();
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+    System.out.println("Solucion generada mi señor");
+    }
+
+}
+
 
