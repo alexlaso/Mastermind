@@ -63,7 +63,7 @@ public class ClienteFullDuplex {
             }return;
         }
 
-        Scanner keyboard = new Scanner(System.in);
+        /*Scanner keyboard = new Scanner(System.in);
         while (!out.checkError() && keyboard.hasNextLine()){
             String line = keyboard.nextLine();
             out.println(line);
@@ -75,6 +75,6 @@ public class ClienteFullDuplex {
             keyboard.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 }

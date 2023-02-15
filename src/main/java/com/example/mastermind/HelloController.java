@@ -39,7 +39,7 @@ public class HelloController implements Initializable{
         switch(intento) {
             case 1:
             intento1color1.setStyle("-fx-background-color: black");
-                //Aqui tengo que mandar el codigo al server para que compruebe el intento
+                System.out.println("comprueba");
                 comprobarEleccion();
                 try {
                     crearFeedback();
@@ -51,84 +51,102 @@ public class HelloController implements Initializable{
                 intento++;
             break;
             case 2:
-                intento2color1.setStyle("-fx-background-color: black");
-                intento2color2.setStyle("-fx-background-color: #333333");
-                intento2color3.setStyle("-fx-background-color: #656565");
-                intento2color4.setStyle("-fx-background-color: #9C9C9C");
-                intento2color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 3:
-                intento3color1.setStyle("-fx-background-color: black");
-                intento3color2.setStyle("-fx-background-color: #333333");
-                intento3color3.setStyle("-fx-background-color: #656565");
-                intento3color4.setStyle("-fx-background-color: #9C9C9C");
-                intento3color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 4:
-                intento4color1.setStyle("-fx-background-color: black");
-                intento4color2.setStyle("-fx-background-color: #333333");
-                intento4color3.setStyle("-fx-background-color: #656565");
-                intento4color4.setStyle("-fx-background-color: #9C9C9C");
-                intento4color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 5:
-                intento5color1.setStyle("-fx-background-color: black");
-                intento5color2.setStyle("-fx-background-color: #333333");
-                intento5color3.setStyle("-fx-background-color: #656565");
-                intento5color4.setStyle("-fx-background-color: #9C9C9C");
-                intento5color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 6:
-                intento6color1.setStyle("-fx-background-color: black");
-                intento6color2.setStyle("-fx-background-color: #333333");
-                intento6color3.setStyle("-fx-background-color: #656565");
-                intento6color4.setStyle("-fx-background-color: #9C9C9C");
-                intento6color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 7:
-                intento7color1.setStyle("-fx-background-color: black");
-                intento7color2.setStyle("-fx-background-color: #333333");
-                intento7color3.setStyle("-fx-background-color: #656565");
-                intento7color4.setStyle("-fx-background-color: #9C9C9C");
-                intento7color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 8:
-                intento8color1.setStyle("-fx-background-color: black");
-                intento8color2.setStyle("-fx-background-color: #333333");
-                intento8color3.setStyle("-fx-background-color: #656565");
-                intento8color4.setStyle("-fx-background-color: #9C9C9C");
-                intento8color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 9:
-                intento9color1.setStyle("-fx-background-color: black");
-                intento9color2.setStyle("-fx-background-color: #333333");
-                intento9color3.setStyle("-fx-background-color: #656565");
-                intento9color4.setStyle("-fx-background-color: #9C9C9C");
-                intento9color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
             case 10:
-                intento10color1.setStyle("-fx-background-color: black");
-                intento10color2.setStyle("-fx-background-color: #333333");
-                intento10color3.setStyle("-fx-background-color: #656565");
-                intento10color4.setStyle("-fx-background-color: #9C9C9C");
-                intento10color5.setStyle("-fx-background-color: #FFFFFF");
                 comprobarEleccion();
+                try {
+                    crearFeedback();
+                    System.out.println(booleanosCorrectos.toString());
+                    System.out.println(booleanosExisten.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 intento++;
                 break;
         }
@@ -148,8 +166,21 @@ public class HelloController implements Initializable{
             color5picker.setValue(null);
             generarIntento(intento);
         }else{
-            System.exit(13);
-            System.err.println("Hay información vacía");
+            color1picker.setValue("BLACK");
+            color2picker.setValue("BLACK");
+            color3picker.setValue("BLACK");
+            color4picker.setValue("BLACK");
+            color5picker.setValue("BLACK");
+            Codigo intento = new Codigo(color1picker.getValue(),color2picker.getValue(),color3picker.getValue(),color4picker.getValue(),color5picker.getValue());
+            String escritura = gson.toJson(intento);
+            System.err.println("Hay información vacía, se han autocompletado a BLACK");
+            generarIntento(intento);
+
+            color1picker.setValue(null);
+            color2picker.setValue(null);
+            color3picker.setValue(null);
+            color4picker.setValue(null);
+            color5picker.setValue(null);
         }
     }
 
@@ -166,7 +197,7 @@ public class HelloController implements Initializable{
     );
 
     public void generarIntento(Codigo intento){
-        File f = new File("intento.json");
+        File f = new File("src/resources/intento.json");
         try {
             f.createNewFile();
             System.out.println("Fichero creado exitosamente");
@@ -185,8 +216,8 @@ public class HelloController implements Initializable{
         String jsonsolucion = "";
         String jsonintento = "";
 
-        BufferedReader brSol = new BufferedReader(new FileReader("correctos.json"));
-        BufferedReader brInt = new BufferedReader(new FileReader("existen.json"));
+        BufferedReader brSol = new BufferedReader(new FileReader("src/resources/correctos.json"));
+        BufferedReader brInt = new BufferedReader(new FileReader("src/resources/existen.json"));
 
         String lineaSol = "";
         String lineaInt = "";
@@ -201,6 +232,181 @@ public class HelloController implements Initializable{
         Gson gson = new Gson();
         booleanosCorrectos = gson.fromJson(jsonsolucion, BooleanosCorrectos.class);
         booleanosExisten = gson.fromJson(jsonintento,BooleanosExisten.class);
+    }
+
+    public void arte(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten){
+        switch (intento){
+            case 1:
+                if (booleanosCorrectos.isColor1Correcto()){intento1color1.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento1color1.setStyle("-fx-background-color: YELLOW");}
+                else{intento1color1.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento1color2.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento1color2.setStyle("-fx-background-color: YELLOW");}
+                else{intento1color2.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento1color3.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento1color3.setStyle("-fx-background-color: YELLOW");}
+                else{intento1color3.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento1color4.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento1color4.setStyle("-fx-background-color: YELLOW");}
+                else{intento1color4.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento1color5.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento1color5.setStyle("-fx-background-color: YELLOW");}
+                else{intento1color5.setStyle("-fx-background-color: WHITE");}
+                break;
+            case 2:
+                if (booleanosCorrectos.isColor1Correcto()){intento2color1.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento2color1.setStyle("-fx-background-color: YELLOW");}
+                else{intento2color1.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento2color2.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento2color2.setStyle("-fx-background-color: YELLOW");}
+                else{intento2color2.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento2color3.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento2color3.setStyle("-fx-background-color: YELLOW");}
+                else{intento2color3.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento2color4.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento2color4.setStyle("-fx-background-color: YELLOW");}
+                else{intento2color4.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento2color5.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento2color5.setStyle("-fx-background-color: YELLOW");}
+                else{intento2color5.setStyle("-fx-background-color: WHITE");}
+                break;
+            case 3:
+                if (booleanosCorrectos.isColor1Correcto()){intento3color1.setStyle("-fx-background-color: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento3color1.setStyle("-fx-background-color: YELLOW");}
+                else{intento3color1.setStyle("-fx-background-color: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento3color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento3color2.setBackground("-fx:background: YELLOW");}
+                else{intento3color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento3color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento3color3.setBackground("-fx:background: YELLOW");}
+                else{intento3color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento3color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento3color4.setBackground("-fx:background: YELLOW");}
+                else{intento3color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento3color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento3color5.setBackground("-fx:background: YELLOW");}
+                else{intento3color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 4:
+                if (booleanosCorrectos.isColor1Correcto()){intento4color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento4color1.setBackground("-fx:background: YELLOW");}
+                else{intento4color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento4color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento4color2.setBackground("-fx:background: YELLOW");}
+                else{intento4color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento4color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento4color3.setBackground("-fx:background: YELLOW");}
+                else{intento4color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento4color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento4color4.setBackground("-fx:background: YELLOW");}
+                else{intento4color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento4color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento4color5.setBackground("-fx:background: YELLOW");}
+                else{intento4color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 5:
+                if (booleanosCorrectos.isColor1Correcto()){intento5color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento5color1.setBackground("-fx:background: YELLOW");}
+                else{intento5color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento5color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento5color2.setBackground("-fx:background: YELLOW");}
+                else{intento5color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento5color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento5color3.setBackground("-fx:background: YELLOW");}
+                else{intento5color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento5color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento5color4.setBackground("-fx:background: YELLOW");}
+                else{intento5color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento5color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento5color5.setBackground("-fx:background: YELLOW");}
+                else{intento5color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 6:
+                if (booleanosCorrectos.isColor1Correcto()){intento6color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento6color1.setBackground("-fx:background: YELLOW");}
+                else{intento6color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento6color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento6color2.setBackground("-fx:background: YELLOW");}
+                else{intento6color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento6color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento6color3.setBackground("-fx:background: YELLOW");}
+                else{intento6color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento6color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento6color4.setBackground("-fx:background: YELLOW");}
+                else{intento6color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento6color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento6color5.setBackground("-fx:background: YELLOW");}
+                else{intento6color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 7:
+                if (booleanosCorrectos.isColor1Correcto()){intento7color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento7color1.setBackground("-fx:background: YELLOW");}
+                else{intento7color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento7color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento7color2.setBackground("-fx:background: YELLOW");}
+                else{intento7color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento7color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento7color3.setBackground("-fx:background: YELLOW");}
+                else{intento7color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento7color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento7color4.setBackground("-fx:background: YELLOW");}
+                else{intento7color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento7color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento7color5.setBackground("-fx:background: YELLOW");}
+                else{intento7color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 8:
+                if (booleanosCorrectos.isColor1Correcto()){intento8color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento8color1.setBackground("-fx:background: YELLOW");}
+                else{intento8color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento8color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento8color2.setBackground("-fx:background: YELLOW");}
+                else{intento8color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento8color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento8color3.setBackground("-fx:background: YELLOW");}
+                else{intento8color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento8color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento8color4.setBackground("-fx:background: YELLOW");}
+                else{intento8color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento8color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento8color5.setBackground("-fx:background: YELLOW");}
+                else{intento8color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 9:
+                if (booleanosCorrectos.isColor1Correcto()){intento9color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento9color1.setBackground("-fx:background: YELLOW");}
+                else{intento9color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento9color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento9color2.setBackground("-fx:background: YELLOW");}
+                else{intento9color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento9color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento9color3.setBackground("-fx:background: YELLOW");}
+                else{intento9color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento9color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento9color4.setBackground("-fx:background: YELLOW");}
+                else{intento9color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento9color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento9color5.setBackground("-fx:background: YELLOW");}
+                else{intento9color5.setBackground("-fx:background: WHITE");}
+                break;
+            case 10:
+                if (booleanosCorrectos.isColor1Correcto()){intento10color1.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor1Existe()){intento10color1.setBackground("-fx:background: YELLOW");}
+                else{intento10color1.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor2Correcto()){intento10color2.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor2Existe()){intento10color2.setBackground("-fx:background: YELLOW");}
+                else{intento10color2.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor3Correcto()){intento10color3.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor3Existe()){intento10color3.setBackground("-fx:background: YELLOW");}
+                else{intento10color3.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor4Correcto()){intento10color4.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor4Existe()){intento10color4.setBackground("-fx:background: YELLOW");}
+                else{intento10color4.setBackground("-fx:background: WHITE");}
+                if (booleanosCorrectos.isColor5Correcto()){intento10color5.setBackground("-fx:background: GREEN");}
+                else if(booleanosExisten.isColor5Existe()){intento10color5.setBackground("-fx:background: YELLOW");}
+                else{intento10color5.setBackground("-fx:background: WHITE");}
+                break;
+        }
     }
 
     @Override

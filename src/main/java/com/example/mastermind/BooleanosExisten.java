@@ -3,7 +3,7 @@ package com.example.mastermind;
 import java.io.Serializable;
 
 public class BooleanosExisten implements Serializable {
-    boolean color1Existe, color2Existe, color3Existe, color4Existe, color5Existe;
+    boolean color1Existe=false, color2Existe=false, color3Existe=false, color4Existe=false, color5Existe=false;
 
     public BooleanosExisten(boolean color1Existe, boolean color2Existe, boolean color3Existe, boolean color4Existe, boolean color5Existe) {
         this.color1Existe = color1Existe;

@@ -30,7 +30,7 @@ public class Receptor implements Runnable {
         colores.add("YELLOW");
         colores.add("PINK");
         colores.add("PURPLE");
-        generarSolucion("solucion.json");
+        generarSolucion("resources/solucion.json");
     }
 
 
@@ -66,6 +66,7 @@ public class Receptor implements Runnable {
             case "comprueba": verificador.comprobarExistencia(solucion, intento);
             verificador.comprobarPosiciones(solucion, intento);
             ajustarRespuesta(verificador);
+            writer.println("blitzkrieg");
             break;
         }
     }
@@ -92,7 +93,7 @@ private void generarSolucion(String filename){
     solucion.setColor5(elegidos.get(4));
     json.put("color5", solucion.getColor5());
 
-    File f = new File("solucion.json");
+    File f = new File("src/resources/solucion.json");
     try {
         f.createNewFile();
         System.out.println("Fichero creado exitosamente");
@@ -111,8 +112,8 @@ private void generarSolucion(String filename){
         String jsonsolucion = "";
         String jsonintento = "";
 
-        BufferedReader brSol = new BufferedReader(new FileReader("solucion.json"));
-        BufferedReader brInt = new BufferedReader(new FileReader("intento.json"));
+        BufferedReader brSol = new BufferedReader(new FileReader("src/resources/solucion.json"));
+        BufferedReader brInt = new BufferedReader(new FileReader("src/resources/intento.json"));
 
         String lineaSol = "";
         String lineaInt = "";
@@ -134,27 +135,27 @@ private void generarSolucion(String filename){
 
         JSONObject jsonExisten = new JSONObject().put("color1Existe", verificador.isColor1Existe()).put("color2Existe", verificador.isColor2Existe()).put("color3Existe", verificador.isColor3Existe()).put("color4Existe", verificador.isColor4Existe()).put("color5Existe", verificador.isColor5Existe());
 
-        File f = new File("correctos.json");
+        File f = new File("src/resources/correctos.json");
         try {
             f.createNewFile();
-            System.out.println("Fichero creado exitosamente");
+            System.out.println("Correctos creado exitosamente");
             BufferedWriter bw = null;
             bw = new BufferedWriter(new FileWriter(f));
             bw.write(jsonCorrecto.toString());
-            System.out.println("Fichero escrito exitosamente");
+            System.out.println("Correctos escrito exitosamente");
             bw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        File fAux = new File("existen.json");
+        File fAux = new File("src/resources/existen.json");
         try {
-            f.createNewFile();
-            System.out.println("Fichero creado exitosamente");
+            fAux.createNewFile();
+            System.out.println("Existen creado exitosamente");
             BufferedWriter bw = null;
-            bw = new BufferedWriter(new FileWriter(f));
+            bw = new BufferedWriter(new FileWriter(fAux));
             bw.write(jsonExisten.toString());
-            System.out.println("Fichero escrito exitosamente");
+            System.out.println("Existen escrito exitosamente");
             bw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
