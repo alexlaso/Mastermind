@@ -2,6 +2,8 @@ package com.example.mastermind;
 
 import java.io.*;
 
+import com.example.mastermind.entity.BooleanosCorrectos;
+import com.example.mastermind.entity.BooleanosExisten;
 import com.google.gson.Gson;
 
 

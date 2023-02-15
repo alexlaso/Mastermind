@@ -1,9 +1,9 @@
-package com.example.mastermind;
+package com.example.mastermind.entity;
 
 import java.io.Serializable;
 
 public class BooleanosCorrectos implements Serializable {
-    private boolean color1Correcto=false, color2Correcto=false, color3Correcto=false, color4Correcto=false, color5Correcto=false;
+    public boolean color1Correcto=false, color2Correcto=false, color3Correcto=false, color4Correcto=false, color5Correcto=false;
 
     public BooleanosCorrectos(boolean color1Correcto, boolean color2Correcto, boolean color3Correcto, boolean color4Correcto, boolean color5Correcto) {
         this.color1Correcto = color1Correcto;

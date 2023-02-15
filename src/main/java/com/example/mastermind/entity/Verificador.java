@@ -1,4 +1,6 @@
-package com.example.mastermind;
+package com.example.mastermind.entity;
+
+import com.example.mastermind.entity.Codigo;
 
 public class Verificador {
     boolean color1Correcto=false, color2Correcto=false, color3Correcto=false, color4Correcto=false, color5Correcto=false;

@@ -98,11 +98,11 @@
       </HBox>
       <HBox fx:id="hboxFinal" layoutX="10.0" layoutY="464.0" minHeight="-Infinity" prefHeight="60.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
          <children>
-            <Pane minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
-            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
-            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
-            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
-            <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="color1Final" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="color2Final" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="color3Final" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="color4Final" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+            <Pane fx:id="color5Final" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="50.0" prefWidth="80.0" />
          </children>
       </HBox>
       <HBox fx:id="hboxFinal1" layoutX="10.0" layoutY="562.0" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="40.0" prefWidth="400.0" VBox.vgrow="ALWAYS">

@@ -8,4 +8,6 @@ module com.example.mastermind {
 
     opens com.example.mastermind to javafx.fxml;
     exports com.example.mastermind;
+    exports com.example.mastermind.entity;
+    opens com.example.mastermind.entity to javafx.fxml;
 }

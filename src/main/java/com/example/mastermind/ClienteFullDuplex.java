@@ -13,14 +13,9 @@ public class ClienteFullDuplex {
         String hostname;
         int port;
 
-        if (args.length<2){
-            System.out.println("Indique el puerto e ip al que desea conectarse.");
-            return;
-        }
-
-        hostname = args[0];
+        hostname = "localhost";
         try {
-            port = Integer.parseInt(args[1]);
+            port = 4567;
         }catch (NumberFormatException nfe){
             System.out.println("Introduzca un número de puerto");
             return;

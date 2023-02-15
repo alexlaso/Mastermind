@@ -1,7 +1,7 @@
 package com.example.mastermind.servidor;
 
-import com.example.mastermind.Codigo;
-import com.example.mastermind.Verificador;
+import com.example.mastermind.entity.Codigo;
+import com.example.mastermind.entity.Verificador;
 import com.google.gson.Gson;
 import org.json.JSONObject;
 
@@ -39,13 +39,11 @@ public class Receptor implements Runnable {
         Codigo solucion = new Codigo();
         Codigo intento = new Codigo();
         while(true){
-            try{read = reader.readLine();
-                logica(solucion, intento);
-                writer.flush();
-            } catch (IOException e) {
-                System.out.println("No soy capaz de leer.");
-                break;
-            }
+            System.out.println("antes de leer");
+            System.out.println("despues");
+            logica(solucion, intento);
+            System.out.println("despues de logica");
+            writer.flush();
             if (read==null){
                 //EOF
                 break;
@@ -58,12 +56,16 @@ public class Receptor implements Runnable {
     private void logica(Codigo solucion, Codigo intento) {
         Verificador verificador = new Verificador();
         try {
+            System.out.println("antes de reader");
+            read = reader.readLine();
+            System.out.println("despues");
             generarObjetos(solucion, intento);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         switch (read){
-            case "comprueba": verificador.comprobarExistencia(solucion, intento);
+            case "comprueba":
+                verificador.comprobarExistencia(solucion, intento);
             verificador.comprobarPosiciones(solucion, intento);
             ajustarRespuesta(verificador);
             writer.println("blitzkrieg");
@@ -92,6 +94,8 @@ private void generarSolucion(String filename){
 
     solucion.setColor5(elegidos.get(4));
     json.put("color5", solucion.getColor5());
+    System.out.println(json);
+    System.out.println(json.toString());
 
     File f = new File("src/resources/solucion.json");
     try {
