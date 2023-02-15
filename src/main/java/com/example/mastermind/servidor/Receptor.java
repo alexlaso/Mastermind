@@ -1,6 +1,8 @@
 package com.example.mastermind.servidor;
 
 import com.example.mastermind.Codigo;
+import com.example.mastermind.Verificador;
+import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -34,9 +36,11 @@ public class Receptor implements Runnable {
 
     @Override
     public void run() {
+        Codigo solucion = new Codigo();
+        Codigo intento = new Codigo();
         while(true){
             try{read = reader.readLine();
-                adivinar();
+                logica(solucion, intento);
                 writer.flush();
             } catch (IOException e) {
                 System.out.println("No soy capaz de leer.");
@@ -51,8 +55,20 @@ public class Receptor implements Runnable {
     }
 
 
-    private void adivinar() {
+    private void logica(Codigo solucion, Codigo intento) {
+        Verificador verificador = new Verificador();
+        try {
+            generarObjetos(solucion, intento);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        switch (read){
+            case "comprueba": verificador.comprobarExistencia(solucion, intento);
+            verificador.comprobarPosiciones(solucion, intento);
+            ajustarRespuesta(verificador);
+            break;
+        }
+    }
 private void generarSolucion(String filename){
     Codigo solucion = new Codigo();
     List<String> elegidos = new ArrayList<String>();
@@ -91,6 +107,57 @@ private void generarSolucion(String filename){
     System.out.println("Solucion generada mi señor");
     }
 
+    public void generarObjetos(Codigo solucion, Codigo intento) throws IOException {
+        String jsonsolucion = "";
+        String jsonintento = "";
+
+        BufferedReader brSol = new BufferedReader(new FileReader("solucion.json"));
+        BufferedReader brInt = new BufferedReader(new FileReader("intento.json"));
+
+        String lineaSol = "";
+        String lineaInt = "";
+
+        while ((lineaSol = brSol.readLine()) != null){
+            jsonsolucion+=lineaSol;
+        }
+        while ((lineaInt = brInt.readLine()) != null){
+            jsonintento+=lineaInt;
+        }
+
+        Gson gson = new Gson();
+        solucion = gson.fromJson(jsonsolucion,Codigo.class);
+        intento = gson.fromJson(jsonintento,Codigo.class);
+    }
+
+    public void ajustarRespuesta(Verificador verificador){
+        JSONObject jsonCorrecto = new JSONObject().put("color1Correcto", verificador.isColor1Correcto()).put("color2Correcto", verificador.isColor2Correcto()).put("color3Correcto", verificador.isColor3Correcto()).put("color4Correcto", verificador.isColor4Correcto()).put("color5Correcto", verificador.isColor5Correcto());
+
+        JSONObject jsonExisten = new JSONObject().put("color1Existe", verificador.isColor1Existe()).put("color2Existe", verificador.isColor2Existe()).put("color3Existe", verificador.isColor3Existe()).put("color4Existe", verificador.isColor4Existe()).put("color5Existe", verificador.isColor5Existe());
+
+        File f = new File("correctos.json");
+        try {
+            f.createNewFile();
+            System.out.println("Fichero creado exitosamente");
+            BufferedWriter bw = null;
+            bw = new BufferedWriter(new FileWriter(f));
+            bw.write(jsonCorrecto.toString());
+            System.out.println("Fichero escrito exitosamente");
+            bw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        File fAux = new File("existen.json");
+        try {
+            f.createNewFile();
+            System.out.println("Fichero creado exitosamente");
+            BufferedWriter bw = null;
+            bw = new BufferedWriter(new FileWriter(f));
+            bw.write(jsonExisten.toString());
+            System.out.println("Fichero escrito exitosamente");
+            bw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
-
-
