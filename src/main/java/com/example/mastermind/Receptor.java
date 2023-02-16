@@ -9,19 +9,20 @@ import com.google.gson.Gson;
 
 
 public class Receptor implements Runnable {
-    BufferedReader reader;
+    DataInputStream reader;
     String read;
     BooleanosExisten booleanosExisten;
     BooleanosCorrectos booleanosCorrectos;
+    HelloController helloController;
 
-    public Receptor(InputStream inputStream){
-        reader = new BufferedReader(new InputStreamReader(inputStream));
+    public Receptor(InputStream inputStream, HelloController helloController){
+        reader = new DataInputStream(inputStream);
+        this.helloController = helloController;
     }
 
 
     @Override
     public void run() {
-
         while(true){
             try{
                 read = reader.readLine();
@@ -49,26 +50,18 @@ public class Receptor implements Runnable {
         }
     }
 
-    private static void objetosParaPintar(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten) throws IOException {
-        String jsoncorrectos = "";
-        String jsonexisten = "";
-
-        BufferedReader brCorr = new BufferedReader(new FileReader("src/resources/correctos.json"));
-        BufferedReader brEx = new BufferedReader(new FileReader("src/resources/existen.json"));
-
-        String lineaSol = "";
-        String lineaInt = "";
-
-        while ((lineaSol = brCorr.readLine()) != null){
-            jsoncorrectos+=lineaSol;
-        }
-        while ((lineaInt = brEx.readLine()) != null){
-            jsonexisten+=lineaInt;
-        }
-
+    private void objetosParaPintar(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten) throws IOException {
         Gson gson = new Gson();
-        booleanosCorrectos = gson.fromJson(jsoncorrectos,BooleanosCorrectos.class);
-        booleanosExisten = gson.fromJson(jsonexisten,BooleanosExisten.class);
-    }
 
+        String jsoncorrectos = reader.readUTF();
+        booleanosCorrectos = gson.fromJson(jsoncorrectos,BooleanosCorrectos.class);
+
+        String jsonexisten = reader.readUTF();
+        booleanosExisten = gson.fromJson(jsonexisten,BooleanosExisten.class);
+
+        helloController.arte(booleanosCorrectos, booleanosExisten);
+        System.out.println("hola holita");
+        System.out.println(booleanosCorrectos.toString());
+        System.out.println(booleanosExisten.toString());
+    }
 }

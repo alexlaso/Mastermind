@@ -34,10 +34,11 @@ public class HelloController implements Initializable{
     private Button btnEnviar;
     @FXML
     private ComboBox<String> color1picker, color2picker, color3picker, color4picker, color5picker;
-    private BooleanosCorrectos booleanosCorrectos;
-    private BooleanosExisten booleanosExisten;
+    private BooleanosCorrectos booleanosCorrectos = new BooleanosCorrectos();
+    private BooleanosExisten booleanosExisten= new BooleanosExisten();
     //private boolean color1acertado=false, color2acertado=false, color3acertado=false, color4acertado=false, color5acertado=false;
-    PrintWriter out;
+    DataOutputStream out;
+    Receptor receptor;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,10 +76,8 @@ public class HelloController implements Initializable{
         System.out.println("a");
         System.out.println(socket.getInetAddress() + " : "+socket.getPort());
 
-        Receptor receptor;
-
         try{
-            receptor = new Receptor(socket.getInputStream());
+            receptor = new Receptor(socket.getInputStream(), this);
             new Thread(receptor).start();
         } catch (IOException e) {
             System.out.println("No se ha podido alcanzar el canal de lectura.");
@@ -86,7 +85,7 @@ public class HelloController implements Initializable{
         }
 
         try {
-            out = new PrintWriter(socket.getOutputStream());
+            out = new DataOutputStream(socket.getOutputStream());
             System.out.println("canal de escritura creado");
         } catch (IOException e) {
             System.out.println("No se puede obtener el canal de escritura sobre el socket.");
@@ -102,114 +101,48 @@ public class HelloController implements Initializable{
     private void enviarIntento(){
         switch(intento) {
             case 1:
-                System.out.println("comprueba");
-                comprobarEleccion();
                 try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
+                    out.writeUTF("comprueba");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                comprobarEleccion();
                 intento++;
             break;
             case 2:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 3:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 4:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 5:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 6:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 7:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 8:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 9:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
             case 10:
                 comprobarEleccion();
-                try {
-                    crearFeedback();
-                    System.out.println(booleanosCorrectos.toString());
-                    System.out.println(booleanosExisten.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 intento++;
                 break;
         }
@@ -221,7 +154,7 @@ public class HelloController implements Initializable{
         {
         Codigo intento = new Codigo(color1picker.getValue(),color2picker.getValue(),color3picker.getValue(),color4picker.getValue(),color5picker.getValue());
         String escritura = gson.toJson(intento);
-            System.out.println(escritura);
+            System.out.println(escritura.toString());
             color1picker.setValue(null);
             color2picker.setValue(null);
             color3picker.setValue(null);
@@ -235,7 +168,7 @@ public class HelloController implements Initializable{
             color4picker.setValue("BLACK");
             color5picker.setValue("BLACK");
             Codigo intento = new Codigo(color1picker.getValue(),color2picker.getValue(),color3picker.getValue(),color4picker.getValue(),color5picker.getValue());
-            String escritura = gson.toJson(intento);
+
             System.err.println("Hay información vacía, se han autocompletado a BLACK");
             generarIntento(intento);
 
@@ -262,32 +195,15 @@ public class HelloController implements Initializable{
     public void generarIntento(Codigo intento){
         JSONObject json = new JSONObject().put("color1",intento.getColor1()).put("color2",intento.getColor2()).put("color3",intento.getColor3()).put("color4",intento.getColor4()).put("color5",intento.getColor5());
         System.out.println("Antes de enviar");
-        out.println(intento);
+        try {
+            out.writeUTF(json.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Despues");
     }
 
-    public void crearFeedback() throws IOException {
-        String jsonsolucion = "";
-        String jsonintento = "";
 
-        BufferedReader brSol = new BufferedReader(new FileReader("src/resources/correctos.json"));
-        BufferedReader brInt = new BufferedReader(new FileReader("src/resources/existen.json"));
-
-        String lineaSol = "";
-        String lineaInt = "";
-
-        while ((lineaSol = brSol.readLine()) != null){
-            jsonsolucion+=lineaSol;
-        }
-        while ((lineaInt = brInt.readLine()) != null){
-            jsonintento+=lineaInt;
-        }
-
-        Gson gson = new Gson();
-        booleanosCorrectos = gson.fromJson(jsonsolucion, BooleanosCorrectos.class);
-        booleanosExisten = gson.fromJson(jsonintento,BooleanosExisten.class);
-        comprobarAcertados(booleanosCorrectos);
-    }
 
     public void comprobarAcertados(BooleanosCorrectos booleanosCorrectos){
         if (booleanosCorrectos.isColor1Correcto()){color1Final.setStyle(color1picker.getValue());}

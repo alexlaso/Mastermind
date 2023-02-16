@@ -13,14 +13,14 @@ import java.util.List;
 public class Receptor implements Runnable {
     List<String> colores = new ArrayList<String>();
 
-    BufferedReader reader;
-    PrintWriter writer;
+    DataInputStream reader;
+    DataOutputStream writer;
     String read;
     int intentos = 0, min = 0, max = 100, prueba = 0;
 
     public Receptor(InputStream inputStream, OutputStream outputStream){
-        reader = new BufferedReader(new InputStreamReader(inputStream));
-        writer = new PrintWriter(outputStream);
+        reader = new DataInputStream(inputStream);
+        writer = new DataOutputStream(outputStream);
 
         colores.add("BLACK");
         colores.add("BLUE");
@@ -43,7 +43,11 @@ public class Receptor implements Runnable {
             System.out.println("despues");
             logica(solucion, intento);
             System.out.println("despues de logica");
-            writer.flush();
+            try {
+                writer.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             if (read==null){
                 //EOF
                 break;
@@ -57,7 +61,7 @@ public class Receptor implements Runnable {
         Verificador verificador = new Verificador();
         try {
             System.out.println("antes de reader");
-            read = reader.readLine();
+            read = reader.readUTF();
             System.out.println("despues");
             generarObjetos(solucion, intento);
         } catch (IOException e) {
@@ -68,8 +72,12 @@ public class Receptor implements Runnable {
                 verificador.comprobarExistencia(solucion, intento);
             verificador.comprobarPosiciones(solucion, intento);
             ajustarRespuesta(verificador);
-            writer.println("blitzkrieg");
-            break;
+                try {
+                    writer.writeUTF("blitzkrieg");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
         }
     }
 private void generarSolucion(String filename){
@@ -94,40 +102,15 @@ private void generarSolucion(String filename){
 
     solucion.setColor5(elegidos.get(4));
     json.put("color5", solucion.getColor5());
-    System.out.println(json);
+
     System.out.println(json.toString());
 
-    File f = new File("src/resources/solucion.json");
-    try {
-        f.createNewFile();
-        System.out.println("Fichero creado exitosamente");
-        BufferedWriter bw = null;
-        bw = new BufferedWriter(new FileWriter(f));
-        bw.write(json.toString());
-        System.out.println("Fichero escrito exitosamente");
-        bw.close();
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
     System.out.println("Solucion generada mi señor");
     }
 
     public void generarObjetos(Codigo solucion, Codigo intento) throws IOException {
         String jsonsolucion = "";
         String jsonintento = "";
-
-        BufferedReader brSol = new BufferedReader(new FileReader("src/resources/solucion.json"));
-        BufferedReader brInt = new BufferedReader(new FileReader("src/resources/intento.json"));
-
-        String lineaSol = "";
-        String lineaInt = "";
-
-        while ((lineaSol = brSol.readLine()) != null){
-            jsonsolucion+=lineaSol;
-        }
-        while ((lineaInt = brInt.readLine()) != null){
-            jsonintento+=lineaInt;
-        }
 
         Gson gson = new Gson();
         solucion = gson.fromJson(jsonsolucion,Codigo.class);
@@ -138,31 +121,5 @@ private void generarSolucion(String filename){
         JSONObject jsonCorrecto = new JSONObject().put("color1Correcto", verificador.isColor1Correcto()).put("color2Correcto", verificador.isColor2Correcto()).put("color3Correcto", verificador.isColor3Correcto()).put("color4Correcto", verificador.isColor4Correcto()).put("color5Correcto", verificador.isColor5Correcto());
 
         JSONObject jsonExisten = new JSONObject().put("color1Existe", verificador.isColor1Existe()).put("color2Existe", verificador.isColor2Existe()).put("color3Existe", verificador.isColor3Existe()).put("color4Existe", verificador.isColor4Existe()).put("color5Existe", verificador.isColor5Existe());
-
-        File f = new File("src/resources/correctos.json");
-        try {
-            f.createNewFile();
-            System.out.println("Correctos creado exitosamente");
-            BufferedWriter bw = null;
-            bw = new BufferedWriter(new FileWriter(f));
-            bw.write(jsonCorrecto.toString());
-            System.out.println("Correctos escrito exitosamente");
-            bw.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        File fAux = new File("src/resources/existen.json");
-        try {
-            fAux.createNewFile();
-            System.out.println("Existen creado exitosamente");
-            BufferedWriter bw = null;
-            bw = new BufferedWriter(new FileWriter(fAux));
-            bw.write(jsonExisten.toString());
-            System.out.println("Existen escrito exitosamente");
-            bw.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
