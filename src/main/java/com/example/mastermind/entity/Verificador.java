@@ -3,17 +3,17 @@ package com.example.mastermind.entity;
 import com.example.mastermind.entity.Codigo;
 
 public class Verificador {
-    boolean color1Correcto=false, color2Correcto=false, color3Correcto=false, color4Correcto=false, color5Correcto=false;
-    boolean color1Existe=false, color2Existe=false, color3Existe=false, color4Existe=false, color5Existe=false;
+    boolean color1Correcto, color2Correcto, color3Correcto, color4Correcto, color5Correcto;
+    boolean color1Existe, color2Existe, color3Existe, color4Existe, color5Existe;
     public Verificador() {
     }
 
     public void comprobarPosiciones(Codigo solucion, Codigo intento){
-        if(solucion.getColor1()==intento.getColor1()){color1Correcto = true;}
-        if(solucion.getColor2()==intento.getColor2()){color2Correcto = true;}
-        if(solucion.getColor3()==intento.getColor3()){color3Correcto = true;}
-        if(solucion.getColor4()==intento.getColor4()){color4Correcto = true;}
-        if(solucion.getColor5()==intento.getColor5()){color5Correcto = true;}
+        if(solucion.getColor1().equals(intento.getColor1())){color1Correcto = true;}else{color1Correcto=false;}
+        if(solucion.getColor2().equals(intento.getColor2())){color2Correcto = true;}else{color2Correcto=false;}
+        if(solucion.getColor3().equals(intento.getColor3())){color3Correcto = true;}else{color3Correcto=false;}
+        if(solucion.getColor4().equals(intento.getColor4())){color4Correcto = true;}else{color4Correcto=false;}
+        if(solucion.getColor5().equals(intento.getColor5())){color5Correcto = true;}else{color5Correcto=false;}
     }
 
     public boolean isColor1Correcto() {
@@ -97,19 +97,19 @@ public class Verificador {
     }
 
     public void comprobarExistencia(Codigo solucion, Codigo intento){
-        if(intento.getColor1()== solucion.getColor1()|intento.getColor1()== solucion.getColor2()|intento.getColor1()== solucion.getColor3()|intento.getColor1()== solucion.getColor4()|intento.getColor1()== solucion.getColor5()){
+        if(intento.getColor1().equals(solucion.getColor1())|intento.getColor1().equals(solucion.getColor2())|intento.getColor1().equals(solucion.getColor3())|intento.getColor1().equals(solucion.getColor4())|intento.getColor1().equals(solucion.getColor5())){
             color1Existe=true;
         }
-        if(intento.getColor2()== solucion.getColor1()|intento.getColor2()== solucion.getColor2()|intento.getColor2()== solucion.getColor3()|intento.getColor2()== solucion.getColor4()|intento.getColor2()== solucion.getColor5()){
+        if(intento.getColor2().equals(solucion.getColor1())|intento.getColor2().equals(solucion.getColor2())|intento.getColor2().equals(solucion.getColor3())|intento.getColor2().equals(solucion.getColor4())|intento.getColor2().equals(solucion.getColor5())){
             color2Existe=true;
         }
-        if(intento.getColor3()== solucion.getColor1()|intento.getColor3()== solucion.getColor2()|intento.getColor3()== solucion.getColor3()|intento.getColor3()== solucion.getColor4()|intento.getColor3()== solucion.getColor5()){
+        if(intento.getColor3().equals(solucion.getColor1())|intento.getColor3().equals(solucion.getColor2())|intento.getColor3().equals(solucion.getColor3())|intento.getColor3().equals(solucion.getColor4())|intento.getColor3().equals(solucion.getColor5())){
             color3Existe=true;
         }
-        if(intento.getColor4()== solucion.getColor1()|intento.getColor4()== solucion.getColor2()|intento.getColor4()== solucion.getColor3()|intento.getColor4()== solucion.getColor4()|intento.getColor4()== solucion.getColor5()){
+        if(intento.getColor4().equals(solucion.getColor1())|intento.getColor4().equals(solucion.getColor2())|intento.getColor4().equals(solucion.getColor3())|intento.getColor4().equals(solucion.getColor4())|intento.getColor4().equals(solucion.getColor5())){
             color4Existe=true;
         }
-        if(intento.getColor5()== solucion.getColor1()|intento.getColor5()== solucion.getColor2()|intento.getColor5()== solucion.getColor3()|intento.getColor5()== solucion.getColor4()|intento.getColor5()== solucion.getColor5()){
+        if(intento.getColor5().equals(solucion.getColor1())|intento.getColor5().equals(solucion.getColor2())|intento.getColor5().equals(solucion.getColor3())|intento.getColor5().equals(solucion.getColor4())|intento.getColor5().equals(solucion.getColor5())){
             color5Existe=true;
         }
     }

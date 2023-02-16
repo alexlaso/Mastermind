@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class HelloController implements Initializable{
-    private int intento=1;
+    private int intento=0;
     Gson gson=new Gson();
 
     @FXML
@@ -34,11 +34,9 @@ public class HelloController implements Initializable{
     private Button btnEnviar;
     @FXML
     private ComboBox<String> color1picker, color2picker, color3picker, color4picker, color5picker;
-    private BooleanosCorrectos booleanosCorrectos = new BooleanosCorrectos();
-    private BooleanosExisten booleanosExisten= new BooleanosExisten();
-    //private boolean color1acertado=false, color2acertado=false, color3acertado=false, color4acertado=false, color5acertado=false;
     DataOutputStream out;
     Receptor receptor;
+    boolean col1Good = false, col2Good = false, col3Good = false, col4Good = false, col5Good = false, allGood = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -100,7 +98,7 @@ public class HelloController implements Initializable{
     @FXML
     private void enviarIntento(){
         switch(intento) {
-            case 1:
+            case 0:
                 try {
                     out.writeUTF("comprueba");
                 } catch (IOException e) {
@@ -109,39 +107,84 @@ public class HelloController implements Initializable{
                 comprobarEleccion();
                 intento++;
             break;
+            case 1:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                comprobarEleccion();
+                intento++;
+                break;
             case 2:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 3:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 4:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 5:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 6:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 7:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 8:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
             case 9:
-                comprobarEleccion();
-                intento++;
-                break;
-            case 10:
+                try {
+                    out.writeUTF("comprueba");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 comprobarEleccion();
                 intento++;
                 break;
@@ -150,8 +193,26 @@ public class HelloController implements Initializable{
     }
 
     private void comprobarEleccion() {
-        if(color1picker.getValue()!=null && color2picker.getValue()!=null && color3picker.getValue()!=null && color4picker.getValue()!=null && color5picker.getValue()!=null)
-        {
+        if(color1picker.getValue()==null){
+            System.err.println("Hay información vacía, se han autocompletado a BLACK");
+            color1picker.setValue("BLACK");
+        }
+        if (color2picker.getValue()==null){
+            System.err.println("Hay información vacía, se han autocompletado a BLACK");
+            color2picker.setValue("BLACK");
+        }
+        if (color3picker.getValue()==null){
+            System.err.println("Hay información vacía, se han autocompletado a BLACK");
+            color3picker.setValue("BLACK");
+        }
+        if (color4picker.getValue()==null){
+            System.err.println("Hay información vacía, se han autocompletado a BLACK");
+            color4picker.setValue("BLACK");
+        }
+        if (color5picker.getValue()==null){
+            System.err.println("Hay información vacía, se han autocompletado a BLACK");
+            color5picker.setValue("BLACK");
+        }
         Codigo intento = new Codigo(color1picker.getValue(),color2picker.getValue(),color3picker.getValue(),color4picker.getValue(),color5picker.getValue());
         String escritura = gson.toJson(intento);
             System.out.println(escritura.toString());
@@ -161,24 +222,7 @@ public class HelloController implements Initializable{
             color4picker.setValue(null);
             color5picker.setValue(null);
             generarIntento(intento);
-        }else{
-            color1picker.setValue("BLACK");
-            color2picker.setValue("BLACK");
-            color3picker.setValue("BLACK");
-            color4picker.setValue("BLACK");
-            color5picker.setValue("BLACK");
-            Codigo intento = new Codigo(color1picker.getValue(),color2picker.getValue(),color3picker.getValue(),color4picker.getValue(),color5picker.getValue());
-
-            System.err.println("Hay información vacía, se han autocompletado a BLACK");
-            generarIntento(intento);
-
-            color1picker.setValue(null);
-            color2picker.setValue(null);
-            color3picker.setValue(null);
-            color4picker.setValue(null);
-            color5picker.setValue(null);
         }
-    }
 
 
     ObservableList<String> lista = FXCollections.observableArrayList(
@@ -205,15 +249,29 @@ public class HelloController implements Initializable{
 
 
 
-    public void comprobarAcertados(BooleanosCorrectos booleanosCorrectos){
-        if (booleanosCorrectos.isColor1Correcto()){color1Final.setStyle(color1picker.getValue());}
-        if (booleanosCorrectos.isColor2Correcto()){color2Final.setStyle(color2picker.getValue());}
-        if (booleanosCorrectos.isColor3Correcto()){color3Final.setStyle(color3picker.getValue());}
-        if (booleanosCorrectos.isColor4Correcto()){color4Final.setStyle(color4picker.getValue());}
-        if (booleanosCorrectos.isColor5Correcto()){color5Final.setStyle(color5picker.getValue());}
+    public void comprobarAcertados(BooleanosCorrectos booleanosCorrectos, Codigo solucionOculta){
+        if (booleanosCorrectos.isColor1Correcto()){color1Final.setStyle("-fx-background-color: "+solucionOculta.getColor1());
+        col1Good=true;}
+        if (booleanosCorrectos.isColor2Correcto()){color2Final.setStyle("-fx-background-color: "+solucionOculta.getColor2());
+        col2Good=true;}
+        if (booleanosCorrectos.isColor3Correcto()){color3Final.setStyle("-fx-background-color: "+solucionOculta.getColor3());
+        col3Good=true;}
+        if (booleanosCorrectos.isColor4Correcto()){color4Final.setStyle("-fx-background-color: "+solucionOculta.getColor4());
+        col4Good=true;}
+        if (booleanosCorrectos.isColor5Correcto()){color5Final.setStyle("-fx-background-color: "+solucionOculta.getColor5());
+        col5Good=true;}
+        if(col1Good && col2Good && col3Good && col4Good && col5Good){allGood=true;}
+        if(allGood){
+            color1picker.setDisable(true);
+            color2picker.setDisable(true);
+            color3picker.setDisable(true);
+            color4picker.setDisable(true);
+            color5picker.setDisable(true);
+            btnEnviar.setDisable(true);
+        }
     }
 
-    public void arte(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten){
+    public void arte(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten, Codigo solucionOculta){
         switch (intento){
             case 1:
                 if (booleanosCorrectos.isColor1Correcto()){intento1color1.setStyle("-fx-background-color: GREEN");}
@@ -231,6 +289,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento1color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento1color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento1color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 2:
                 if (booleanosCorrectos.isColor1Correcto()){intento2color1.setStyle("-fx-background-color: GREEN");}
@@ -248,6 +307,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento2color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento2color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento2color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 3:
                 if (booleanosCorrectos.isColor1Correcto()){intento3color1.setStyle("-fx-background-color: GREEN");}
@@ -265,6 +325,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento3color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento3color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento3color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 4:
                 if (booleanosCorrectos.isColor1Correcto()){intento4color1.setStyle("-fx-background-color: GREEN");}
@@ -282,6 +343,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento4color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento4color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento4color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 5:
                 if (booleanosCorrectos.isColor1Correcto()){intento5color1.setStyle("-fx-background-color: GREEN");}
@@ -299,6 +361,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento5color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento5color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento5color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 6:
                 if (booleanosCorrectos.isColor1Correcto()){intento6color1.setStyle("-fx-background-color: GREEN");}
@@ -316,6 +379,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento6color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento6color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento6color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 7:
                 if (booleanosCorrectos.isColor1Correcto()){intento7color1.setStyle("-fx-background-color: GREEN");}
@@ -333,6 +397,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento7color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento7color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento7color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 8:
                 if (booleanosCorrectos.isColor1Correcto()){intento8color1.setStyle("-fx-background-color: GREEN");}
@@ -350,6 +415,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento8color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento8color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento8color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 9:
                 if (booleanosCorrectos.isColor1Correcto()){intento9color1.setStyle("-fx-background-color: GREEN");}
@@ -367,6 +433,7 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento9color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento9color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento9color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
             case 10:
                 if (booleanosCorrectos.isColor1Correcto()){intento10color1.setStyle("-fx-background-color: GREEN");}
@@ -384,7 +451,9 @@ public class HelloController implements Initializable{
                 if (booleanosCorrectos.isColor5Correcto()){intento10color5.setStyle("-fx-background-color: GREEN");}
                 else if(booleanosExisten.isColor5Existe()){intento10color5.setStyle("-fx-background-color: YELLOW");}
                 else{intento10color5.setStyle("-fx-background-color: WHITE");}
+                comprobarAcertados(booleanosCorrectos, solucionOculta);
                 break;
         }
     }
+
 }

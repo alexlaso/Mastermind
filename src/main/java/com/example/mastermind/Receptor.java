@@ -4,6 +4,7 @@ import java.io.*;
 
 import com.example.mastermind.entity.BooleanosCorrectos;
 import com.example.mastermind.entity.BooleanosExisten;
+import com.example.mastermind.entity.Codigo;
 import com.google.gson.Gson;
 
 
@@ -11,8 +12,9 @@ import com.google.gson.Gson;
 public class Receptor implements Runnable {
     DataInputStream reader;
     String read;
-    BooleanosExisten booleanosExisten;
-    BooleanosCorrectos booleanosCorrectos;
+    BooleanosExisten booleanosExisten = new BooleanosExisten();
+    BooleanosCorrectos booleanosCorrectos= new BooleanosCorrectos();
+    Codigo solucionOculta = new Codigo();
     HelloController helloController;
 
     public Receptor(InputStream inputStream, HelloController helloController){
@@ -25,8 +27,8 @@ public class Receptor implements Runnable {
     public void run() {
         while(true){
             try{
-                read = reader.readLine();
-                pintorAleman(booleanosCorrectos, booleanosExisten);
+                read = reader.readUTF();
+                pintorAleman();
             } catch (IOException e) {
                 System.out.println("No soy capaz de leer.");
                 break;
@@ -42,26 +44,24 @@ public class Receptor implements Runnable {
         }
     }
 
-    public void pintorAleman(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten) throws IOException {
+    public void pintorAleman() throws IOException {
+        Gson gson = new Gson();
         switch(read){
+            case"ocultacion":
+                solucionOculta = gson.fromJson(reader.readUTF(), Codigo.class);
+                //Félix no me mates, necesito que el cliente obtenga la solución para pintarlo en caso de que lo acierte...
+                break;
             case"blitzkrieg":
-                objetosParaPintar(booleanosCorrectos, booleanosExisten);
-                //arte(booleanosCorrectos, booleanosExisten);
+                booleanosCorrectos = gson.fromJson(reader.readUTF(),BooleanosCorrectos.class);
+                System.out.println(booleanosCorrectos.toString());
+                booleanosExisten = gson.fromJson(reader.readUTF(),BooleanosExisten.class);
+                System.out.println(booleanosExisten.toString());
+                helloController.arte(booleanosCorrectos, booleanosExisten, solucionOculta);
+                break;
+            default:
+                System.out.println("ERROR");
+                break;
         }
     }
 
-    private void objetosParaPintar(BooleanosCorrectos booleanosCorrectos, BooleanosExisten booleanosExisten) throws IOException {
-        Gson gson = new Gson();
-
-        String jsoncorrectos = reader.readUTF();
-        booleanosCorrectos = gson.fromJson(jsoncorrectos,BooleanosCorrectos.class);
-
-        String jsonexisten = reader.readUTF();
-        booleanosExisten = gson.fromJson(jsonexisten,BooleanosExisten.class);
-
-        helloController.arte(booleanosCorrectos, booleanosExisten);
-        System.out.println("hola holita");
-        System.out.println(booleanosCorrectos.toString());
-        System.out.println(booleanosExisten.toString());
-    }
 }

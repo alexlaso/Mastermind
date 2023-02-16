@@ -16,8 +16,9 @@ public class Receptor implements Runnable {
     DataInputStream reader;
     DataOutputStream writer;
     String read;
-    int intentos = 0, min = 0, max = 100, prueba = 0;
-
+    Codigo solucion = new Codigo();
+    Codigo intento= new Codigo();
+    JSONObject json = new JSONObject();
     public Receptor(InputStream inputStream, OutputStream outputStream){
         reader = new DataInputStream(inputStream);
         writer = new DataOutputStream(outputStream);
@@ -30,20 +31,18 @@ public class Receptor implements Runnable {
         colores.add("YELLOW");
         colores.add("PINK");
         colores.add("PURPLE");
-        generarSolucion("resources/solucion.json");
     }
 
 
     @Override
     public void run() {
-        Codigo solucion = new Codigo();
-        Codigo intento = new Codigo();
+        generarSolucion();
         while(true){
-            System.out.println("antes de leer");
-            System.out.println("despues");
-            logica(solucion, intento);
-            System.out.println("despues de logica");
             try {
+                writer.writeUTF("ocultacion");
+                writer.writeUTF(json.toString());
+                read = reader.readUTF();
+                logica();
                 writer.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -57,37 +56,53 @@ public class Receptor implements Runnable {
     }
 
 
-    private void logica(Codigo solucion, Codigo intento) {
+    public void logica() {
         Verificador verificador = new Verificador();
-        try {
-            System.out.println("antes de reader");
-            read = reader.readUTF();
-            System.out.println("despues");
-            generarObjetos(solucion, intento);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Gson gson = new Gson();
         switch (read){
             case "comprueba":
+                try {
+                    intento = gson.fromJson(reader.readUTF(),Codigo.class);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                verificador.comprobarPosiciones(solucion, intento);
+
+                JSONObject jsonCorrectos = new JSONObject().put("color1Correcto",verificador.isColor1Correcto()).put("color2Correcto",verificador.isColor2Correcto()).put("color3Correcto",verificador.isColor3Correcto()).put("color4Correcto",verificador.isColor4Correcto()).put("color5Correcto",verificador.isColor5Correcto());
+
+
                 verificador.comprobarExistencia(solucion, intento);
-            verificador.comprobarPosiciones(solucion, intento);
-            ajustarRespuesta(verificador);
+                JSONObject jsonExisten = new JSONObject().put("color1Existe",verificador.isColor1Existe()).put("color2Existe",verificador.isColor2Existe()).put("color3Existe",verificador.isColor3Existe()).put("color4Existe",verificador.isColor4Existe()).put("color5Existe",verificador.isColor5Existe());
+
                 try {
                     writer.writeUTF("blitzkrieg");
+
+                    writer.writeUTF(jsonCorrectos.toString());
+                    writer.flush();
+
+                    writer.writeUTF(jsonExisten.toString());
+                    writer.flush();
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            default:
+                try {
+                    writer.writeUTF("Error desconocido");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 break;
         }
     }
-private void generarSolucion(String filename){
-    Codigo solucion = new Codigo();
+private void generarSolucion(){
+
     List<String> elegidos = new ArrayList<String>();
     for (int i=0; i<5;i++){
         Collections.shuffle(colores);
         elegidos.add(colores.get(0));
     }
-    JSONObject json = new JSONObject();
     solucion.setColor1(elegidos.get(0));
     json.put("color1", solucion.getColor1());
 
@@ -103,23 +118,6 @@ private void generarSolucion(String filename){
     solucion.setColor5(elegidos.get(4));
     json.put("color5", solucion.getColor5());
 
-    System.out.println(json.toString());
-
-    System.out.println("Solucion generada mi señor");
-    }
-
-    public void generarObjetos(Codigo solucion, Codigo intento) throws IOException {
-        String jsonsolucion = "";
-        String jsonintento = "";
-
-        Gson gson = new Gson();
-        solucion = gson.fromJson(jsonsolucion,Codigo.class);
-        intento = gson.fromJson(jsonintento,Codigo.class);
-    }
-
-    public void ajustarRespuesta(Verificador verificador){
-        JSONObject jsonCorrecto = new JSONObject().put("color1Correcto", verificador.isColor1Correcto()).put("color2Correcto", verificador.isColor2Correcto()).put("color3Correcto", verificador.isColor3Correcto()).put("color4Correcto", verificador.isColor4Correcto()).put("color5Correcto", verificador.isColor5Correcto());
-
-        JSONObject jsonExisten = new JSONObject().put("color1Existe", verificador.isColor1Existe()).put("color2Existe", verificador.isColor2Existe()).put("color3Existe", verificador.isColor3Existe()).put("color4Existe", verificador.isColor4Existe()).put("color5Existe", verificador.isColor5Existe());
+    System.out.println("Solución: "+json.toString());
     }
 }
