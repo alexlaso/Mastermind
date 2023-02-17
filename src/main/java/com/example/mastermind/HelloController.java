@@ -188,6 +188,9 @@ public class HelloController implements Initializable{
                 comprobarEleccion();
                 intento++;
                 break;
+            case 10:
+                System.out.println("GAME OVER");
+                System.exit(3);
         }
 
     }
