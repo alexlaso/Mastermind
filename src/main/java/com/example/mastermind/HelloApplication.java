@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+    // Agradecimiento especial a diMITRI por su ayuda e input a la hora de crear este proyecto
+    // github.com/dimo-tastik
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
